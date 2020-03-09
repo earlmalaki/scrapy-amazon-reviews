@@ -9,6 +9,19 @@ import scrapy
 
 
 class ScrapyAmazonReviewsItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+   # define the fields for your item here like:
+   pass
+
+# id = scrapy.Field()
+# date = scrapy.Field()
+# username = scrapy.Field()
+# rating = scrapy.Field()
+# # model = scrapy.Field()
+# variation = scrapy.Field()
+# badge = scrapy.Field()
+# upvote = scrapy.Field()
+# comments = scrapy.Field()
+# title = scrapy.Field()
+# body = scrapy.Field()
+# # replied = scrapy.Field()
+# # reply = scrapy.Field()

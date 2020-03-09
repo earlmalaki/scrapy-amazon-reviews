@@ -14,6 +14,13 @@ BOT_NAME = 'scrapy_amazon_reviews'
 SPIDER_MODULES = ['scrapy_amazon_reviews.spiders']
 NEWSPIDER_MODULE = 'scrapy_amazon_reviews.spiders'
 
+# Export as CSV Feed
+FEED_FORMAT = "csv"
+# FEED_URI = "revs.csv"
+FEED_URI = "%(name)s/%(time)s.csv"
+# FEED_EXPORT_ENCODING = "utf-8"
+# FEED_EXPORT_FIELDS = []
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scrapy_amazon_reviews (+http://www.yourdomain.com)'

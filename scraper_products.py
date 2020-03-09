@@ -11,10 +11,10 @@ products = [
     #     'asin': 'B07T3H979V',
     #     'model': 'C3326dw'
     # },
-    # {
-    #     'asin': 'B07T4LGDGQ',
-    #     'model': 'MC3224adwe'
-    # },
+    {
+        'asin': 'B07T4LGDGQ',
+        'model': 'MC3224adwe'
+    }
     # {
     #     'asin': 'B07T5PRRXD',
     #     'model': 'MC3326adwe'
@@ -27,10 +27,10 @@ products = [
     #     'asin': 'B07T3HB1VZ',
     #     'model': 'MB2236adwe'
     # },
-    {
-        'asin': 'B07N27LPPG',
-        'model': 'MB2236adw'
-    }
+    # {
+    #     'asin': 'B07N27LPPG',
+    #     'model': 'MB2236adw'
+    # }
 ]
 
 def get_products():
