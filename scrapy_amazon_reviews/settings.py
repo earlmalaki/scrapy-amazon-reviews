@@ -16,14 +16,16 @@ NEWSPIDER_MODULE = 'scrapy_amazon_reviews.spiders'
 
 # Export as CSV Feed
 FEED_FORMAT = "csv"
-# FEED_URI = "revs.csv"
-FEED_URI = "%(name)s/%(time)s.csv"
-# FEED_EXPORT_ENCODING = "utf-8"
-# FEED_EXPORT_FIELDS = []
-
+FEED_URI = "%(name)s/Scrapy_AmazonReviews_%(time)s.csv"
+FEED_EXPORT_ENCODING = "utf-8"
+FEED_EXPORT_FIELDS = ['id','date','username','badge','stars','model','variation','upvotes','comments','replied','title','url','reply','body']
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scrapy_amazon_reviews (+http://www.yourdomain.com)'
+# header from amazon xhr request
+# USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
+# og scraper main header
+USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -95,3 +97,5 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# HTTPERROR_ALLOWED_CODES=[404]
