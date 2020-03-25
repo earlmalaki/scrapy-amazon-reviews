@@ -30,6 +30,10 @@ products = [
     {
         'asin': 'B07N27LPPG',
         'model': 'MB2236adw'
+    },
+    {
+        'asin': 'B07N23D92N',
+        'model': 'B2236dw'
     }
 ]
 

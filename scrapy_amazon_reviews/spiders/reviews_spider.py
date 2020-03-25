@@ -77,6 +77,8 @@ class AmazonReviewsSpider(scrapy.Spider):
       #                         # headers=constants.AMZ_AJAX_COMMENTS_HEADERS,
       #                         body=json.dumps(payload))
       
+      # lxk_rep = {'replied': 'No',
+      #             'reply': ""}
       if (int(comments_count) == 0):
         lxk_rep = {'replied': 'No',
                   'reply': ""}
