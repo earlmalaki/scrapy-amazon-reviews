@@ -18,39 +18,39 @@ NEWSPIDER_MODULE = 'scrapy_amazon_reviews.spiders'
 FEED_FORMAT = "csv"
 FEED_URI = "%(name)s/Scrapy_AmazonReviews_%(time)s.csv"
 FEED_EXPORT_ENCODING = "utf-8"
-FEED_EXPORT_FIELDS = ['id','date','username','badge','stars','model','variation','upvotes','comments','replied','title','url','reply','body']
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scrapy_amazon_reviews (+http://www.yourdomain.com)'
 # header from amazon xhr request
 # USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
 # og scraper main header
-# USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0"
-USER_AGENTS = [
-    ('Mozilla/5.0 (X11; Linux x86_64) '
-     'AppleWebKit/537.36 (KHTML, like Gecko) '
-     'Chrome/57.0.2987.110 '
-     'Safari/537.36'),  # chrome
-    ('Mozilla/5.0 (X11; Linux x86_64) '
-     'AppleWebKit/537.36 (KHTML, like Gecko) '
-     'Chrome/61.0.3163.79 '
-     'Safari/537.36'),  # chrome
-    ('Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:55.0) '
-     'Gecko/20100101 '
-     'Firefox/55.0'),  # firefox
-    ('Mozilla/5.0 (X11; Linux x86_64) '
-     'AppleWebKit/537.36 (KHTML, like Gecko) '
-     'Chrome/61.0.3163.91 '
-     'Safari/537.36'),  # chrome
-    ('Mozilla/5.0 (X11; Linux x86_64) '
-     'AppleWebKit/537.36 (KHTML, like Gecko) '
-     'Chrome/62.0.3202.89 '
-     'Safari/537.36'),  # chrome
-    ('Mozilla/5.0 (X11; Linux x86_64) '
-     'AppleWebKit/537.36 (KHTML, like Gecko) '
-     'Chrome/63.0.3239.108 '
-     'Safari/537.36'),  # chrome
-]
+USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0"
+# USER_AGENTS = [
+#     ('Mozilla/5.0 (X11; Linux x86_64) '
+#      'AppleWebKit/537.36 (KHTML, like Gecko) '
+#      'Chrome/57.0.2987.110 '
+#      'Safari/537.36'),  # chrome
+#     ('Mozilla/5.0 (X11; Linux x86_64) '
+#      'AppleWebKit/537.36 (KHTML, like Gecko) '
+#      'Chrome/61.0.3163.79 '
+#      'Safari/537.36'),  # chrome
+#     ('Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:55.0) '
+#      'Gecko/20100101 '
+#      'Firefox/55.0'),  # firefox
+#     ('Mozilla/5.0 (X11; Linux x86_64) '
+#      'AppleWebKit/537.36 (KHTML, like Gecko) '
+#      'Chrome/61.0.3163.91 '
+#      'Safari/537.36'),  # chrome
+#     ('Mozilla/5.0 (X11; Linux x86_64) '
+#      'AppleWebKit/537.36 (KHTML, like Gecko) '
+#      'Chrome/62.0.3202.89 '
+#      'Safari/537.36'),  # chrome
+#     ('Mozilla/5.0 (X11; Linux x86_64) '
+#      'AppleWebKit/537.36 (KHTML, like Gecko) '
+#      'Chrome/63.0.3239.108 '
+#      'Safari/537.36'),  # chrome
+# ]
 
 # ROTATING_PROXY_LIST = [
 #     'proxy1.com:8000',
@@ -97,7 +97,7 @@ COOKIES_ENABLED = False
 #}
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-    'scrapy_useragents.downloadermiddlewares.useragents.UserAgentsMiddleware': 500,     # Rotating User Agents
+    # 'scrapy_useragents.downloadermiddlewares.useragents.UserAgentsMiddleware': 500,     # Rotating User Agents
     # 'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,    # rotating IP proxies
 }
 

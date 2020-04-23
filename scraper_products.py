@@ -34,6 +34,26 @@ products = [
     {
         'asin': 'B07N23D92N',
         'model': 'B2236dw'
+    },
+    {
+        'asin': 'B08411CN2Y',
+        'model': 'MC3426adw'
+    },
+    {
+        'asin': 'B084117J9Z',
+        'model': 'C3426dw'
+    },
+    {
+        'asin': 'B082VXTDQR',
+        'model': 'MB3442adw'
+    },
+    {
+        'asin': 'B082VY58HF',
+        'model': 'B3442dw'
+    },
+    {
+        'asin': 'B082VY2RMY',
+        'model': 'B3340dw'
     }
 ]
 

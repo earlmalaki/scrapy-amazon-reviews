@@ -4,6 +4,7 @@
 import scrapy
 from scrapy_amazon_reviews.items import AmazonReview
 
+import csv
 import sys
 import json
 import requests
@@ -19,6 +20,13 @@ class AmazonReviewsSpider(scrapy.Spider):
   # Spider name
   name = 'amazon_reviews'
   allowed_domains = ['www.amazon.com']
+  custom_settings = {
+    'FEED_EXPORT_FIELDS': ['id','date','username','stars','model','purchaseType','title','body','url','upvotes','comments','LXKresponded','reply'],
+  }
+
+  # def closed (self, reason):
+  #   sortedlist = sorted(reader, key=lambda row: row[3], reverse=True)
+  #   reader = csv.reader(open("files.csv"), delimiter=";")
   
   def start_requests(self):
     # yield requests for all starting urls
@@ -43,7 +51,7 @@ class AmazonReviewsSpider(scrapy.Spider):
       date = review.css('span[data-hook="review-date"]::text').get().strip('\n ').split(" on ")[1]
       username = review.css('.a-profile-name::text').get().strip('\n ')
       rating = review.css('i[data-hook="review-star-rating"] > .a-icon-alt::text').get().strip('\n ')[0]
-      variation = review.css('a[data-hook="format-strip"]::text').get(default="N/A").strip('\n ')
+      # variation = review.css('a[data-hook="format-strip"]::text').get(default="N/A").strip('\n ')
 
       # Verified
       badgeVer = review.css('span[data-hook="avp-badge"]::text').get()
@@ -91,24 +99,25 @@ class AmazonReviewsSpider(scrapy.Spider):
       item['id'] = id
       item['date'] = date
       item['username'] = username
-      item['badge'] = badge
       item['stars'] = rating
       item['model'] = product['model']
-      item['variation'] = variation      
-      item['upvotes'] = upvote
-      item['comments'] = comments_count
-      item['replied'] = lxk_rep['replied']
+      item['purchaseType'] = badge
       item['title'] = title
       item['body'] = body
-      item['reply'] = lxk_rep['reply']
       item['url'] = url
+      item['upvotes'] = upvote
+      item['comments'] = comments_count
+      item['LXKresponded'] = lxk_rep['replied']
+      item['reply'] = lxk_rep['reply']
       yield item
 
     # Get the URL stored in the next page button's href attribute
     # Then follow each page and the next page until exhausted
     next_page = reviews_data.css('div[data-hook="pagination-bar"]').css('.a-last > a::attr(href)').get()
     if next_page is not None:
-      yield response.follow(next_page, callback=self.parse, meta=product)
+      # yield response.follow(next_page, callback=self.parse, meta=product)
+      next_page = response.urljoin(next_page)
+      yield scrapy.Request(next_page, callback=self.parse, meta=product)
 
 
   def get_lxk_reply(self, asin, id):
