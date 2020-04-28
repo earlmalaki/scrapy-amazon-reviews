@@ -2,6 +2,10 @@
 # Reviews in the former pages have formatstrip, while the latter does not.
 # For product with single version only, the format should be
 # {ASIN: Model Name}
+
+# CX Watchlist
+# C3224dw,C3326dw,MC3224adwe,MC3326adwe,MC3224dwe,MB2236adwe,MB2236adw,B2236dw,MC3426adw,C3426dw,MB3442adw,B3442dw,B3340dw
+
 products = [
     {
         'asin': 'B07T6PGM4J',
@@ -59,3 +63,18 @@ products = [
 
 def get_products():
     return products
+
+
+    
+# Special request 04/28 -- Jan
+# B3340dw, B3442dw, MB3442dw
+# products = [
+#     {
+#         'asin': 'B082VY2RMY',
+#         'model': 'B3340dw'
+#     },
+#     {
+#         'asin': 'B082VY58HF',
+#         'model': 'B3442dw'
+#     }
+# ]

@@ -21,25 +21,37 @@ class AmazonReviewsSpider(scrapy.Spider):
   name = 'amazon_reviews'
   allowed_domains = ['www.amazon.com']
   custom_settings = {
-    'FEED_EXPORT_FIELDS': ['id','date','username','stars','model','purchaseType','title','body','url','upvotes','comments','LXKresponded','reply'],
+    'FEED_EXPORT_FIELDS': ['id','date','username','stars','model','purchaseType','title','body','url','upvotes','comments','LXKresponded','reply'],   # Proper order of columns
   }
 
-  # def closed (self, reason):
-  #   sortedlist = sorted(reader, key=lambda row: row[3], reverse=True)
-  #   reader = csv.reader(open("files.csv"), delimiter=";")
-  
   def start_requests(self):
     # yield requests for all starting urls
     # starting urls are page 1 of product review page for each product
     # pass product info (ASIN and Model) to parse method via meta attr
     for product in products_source.get_products():
-      url = constants.PR_URL_BASE + product['asin'] + constants.PR_URL_PARAMS
+      url = constants.PR_URL_BASE + product['asin'] + constants.PR_URL_PARAMS + "1"
       yield scrapy.Request(url=url,callback=self.parse,meta=product)
 
   # Defining a Scrapy parser
   def parse(self, response):
     # extract passed data (product)
     product = response.meta
+
+    # Get number of reviews
+    # Calculate number of pages based on number of reviews
+    # Yield URLs for all pages
+    numberOfReviews = response.css('span[data-hook="cr-filter-info-review-count"]').get()
+    if (numberOfReviews is not None):
+      numberOfReviews = int(numberOfReviews.strip('\n ').split()[-2])
+      if (numberOfReviews > 10):
+        numberOfPages = numberOfReviews / 10
+        if (not numberOfPages.is_integer()):
+          numberOfPages += 1
+        numberOfPages = int(numberOfPages) + 1
+
+        for x in range (2, numberOfPages):
+          url = constants.PR_URL_BASE + product['asin'] + constants.PR_URL_PARAMS + str(x)
+          yield scrapy.Request(url=url,callback=self.parse,meta=product)
 
     # Get page section that contains the reviews
     # Then get selector for all reviews in the page
@@ -85,13 +97,13 @@ class AmazonReviewsSpider(scrapy.Spider):
       #                         # headers=constants.AMZ_AJAX_COMMENTS_HEADERS,
       #                         body=json.dumps(payload))
       
-      # lxk_rep = {'replied': 'No',
-      #             'reply': ""}
+      
       if (int(comments_count) == 0):
         lxk_rep = {'replied': 'No',
                   'reply': ""}
       else:
-          lxk_rep = self.get_lxk_reply(product['asin'], id)
+        lxk_rep = self.get_lxk_reply(product['asin'], id)
+        # lxk_rep = {'replied': 'No','reply': ""}   # Filler
 
       url = constants.CR_URL_BASE + id + constants.CR_URL_PARAMS + product['asin']
       
@@ -110,14 +122,6 @@ class AmazonReviewsSpider(scrapy.Spider):
       item['LXKresponded'] = lxk_rep['replied']
       item['reply'] = lxk_rep['reply']
       yield item
-
-    # Get the URL stored in the next page button's href attribute
-    # Then follow each page and the next page until exhausted
-    next_page = reviews_data.css('div[data-hook="pagination-bar"]').css('.a-last > a::attr(href)').get()
-    if next_page is not None:
-      # yield response.follow(next_page, callback=self.parse, meta=product)
-      next_page = response.urljoin(next_page)
-      yield scrapy.Request(next_page, callback=self.parse, meta=product)
 
 
   def get_lxk_reply(self, asin, id):

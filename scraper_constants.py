@@ -1,7 +1,7 @@
 # URL for Amazon Review Page for a prodcut
 PR_URL_BASE = "https://www.amazon.com/product-reviews/"
-PR_URL_PARAMS = "?ie=UTF8&reviewerType=all_reviews&sortBy=recent&pageNumber=1&m=2529788011"
-# Example: https://www.amazon.com/product-reviews/B07F21DSM8?sortBy=recent&pageNumber=1&m=2529788011
+PR_URL_PARAMS = "?ie=UTF8&reviewerType=all_reviews&sortBy=recent&m=2529788011&pageNumber="
+# Example: https://www.amazon.com/product-reviews/B07F21DSM8?sortBy=recent&m=2529788011&pageNumber=1
 # Vars -> ASIN (B07F21DSM8), Page (1), Lexmark Amazon Seller ID (2529788011)
 
 # URL for Amazon Review Page for a customer review
