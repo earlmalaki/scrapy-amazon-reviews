@@ -5,6 +5,7 @@
 
 # CX Watchlist
 # C3224dw,C3326dw,MC3224adwe,MC3326adwe,MC3224dwe,MB2236adwe,MB2236adw,B2236dw,MC3426adw,C3426dw,MB3442adw,B3442dw,B3340dw
+#   
 
 products = [
     {
@@ -59,13 +60,38 @@ products = [
         'asin': 'B082VY2RMY',
         'model': 'B3340dw'
     }
+    # ,
+    # Rest of the products
+    # {
+    #     'model': 'B2338dw',
+    #     'asin': 'B07F4J2STN'
+    # },
+    # {
+    #     'model': 'B2442DW',
+    #     'asin': 'B07F432573'
+    # },
+    # {
+    #     'model': 'C2325dw',
+    #     'asin': 'B07FDJQR32'
+    # },
+    # {
+    #     'model': 'MC2425adw',
+    #     'asin': 'B07FDJQ4JR'
+    # },
+    # {
+    #     'model': 'MB2442adwe',
+    #     'asin': 'B07F22K2LS'
+    # },
+    # {
+    #     'model': 'MB2338adw',
+    #     'asin': 'B07F21DSM8'
+    # }
 ]
 
 def get_products():
     return products
 
 
-    
 # Special request 04/28 -- Jan
 # B3340dw, B3442dw, MB3442dw
 # products = [
