@@ -15,9 +15,9 @@ SPIDER_MODULES = ['scrapy_amazon_reviews.spiders']
 NEWSPIDER_MODULE = 'scrapy_amazon_reviews.spiders'
 
 # Export as CSV Feed
-FEED_FORMAT = "csv"
-FEED_URI = "%(name)s/Scrapy_AmazonReviews_%(time)s.csv"
-FEED_EXPORT_ENCODING = "utf-8"
+# FEED_FORMAT = "csv"
+# FEED_URI = "%(name)s/Scrapy_AmazonReviews_%(time)s.csv"
+# FEED_EXPORT_ENCODING = "utf-8"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -110,9 +110,10 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
+ITEM_PIPELINES = {
 #    'scrapy_amazon_reviews.pipelines.ScrapyAmazonReviewsPipeline': 300,
-#}
+   'scrapy_amazon_reviews.pipelines.CsvExportPipeline':300
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

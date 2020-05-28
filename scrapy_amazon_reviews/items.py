@@ -14,6 +14,8 @@ class AmazonReview(scrapy.Item):
    username = scrapy.Field()
    stars = scrapy.Field()
    model = scrapy.Field()
+   codename = scrapy.Field()
+   program = scrapy.Field()
    purchaseType = scrapy.Field()
    title = scrapy.Field()
    body = scrapy.Field()
@@ -22,4 +24,5 @@ class AmazonReview(scrapy.Item):
    comments = scrapy.Field()
    LXKresponded = scrapy.Field()
    reply = scrapy.Field()
+   preprocessed_body = scrapy.Field()
    

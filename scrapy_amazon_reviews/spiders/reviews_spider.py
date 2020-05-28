@@ -14,15 +14,14 @@ from bs4 import BeautifulSoup
 # Import auxilliary files
 import scraper_constants as constants
 import scraper_products as products_source
+import product_map
+import text_preprocessor
 
 # Creating a new class to implement Spider
 class AmazonReviewsSpider(scrapy.Spider):
   # Spider name
   name = 'amazon_reviews'
   allowed_domains = ['www.amazon.com']
-  custom_settings = {
-    'FEED_EXPORT_FIELDS': ['id','date','username','stars','model','purchaseType','title','body','url','upvotes','comments','LXKresponded','reply'],   # Proper order of columns
-  }
 
   def start_requests(self):
     # yield requests for all starting urls
@@ -64,6 +63,8 @@ class AmazonReviewsSpider(scrapy.Spider):
       username = review.css('.a-profile-name::text').get().strip('\n ')
       rating = review.css('i[data-hook="review-star-rating"] > .a-icon-alt::text').get().strip('\n ')[0]
       # variation = review.css('a[data-hook="format-strip"]::text').get(default="N/A").strip('\n ')
+
+      [program, codename] = product_map.get_program_codename(product['model'])
 
       # Verified
       badgeVer = review.css('span[data-hook="avp-badge"]::text').get()
@@ -113,6 +114,8 @@ class AmazonReviewsSpider(scrapy.Spider):
       item['username'] = username
       item['stars'] = rating
       item['model'] = product['model']
+      item['codename'] = codename
+      item['program'] = program
       item['purchaseType'] = badge
       item['title'] = title
       item['body'] = body
@@ -121,6 +124,7 @@ class AmazonReviewsSpider(scrapy.Spider):
       item['comments'] = comments_count
       item['LXKresponded'] = lxk_rep['replied']
       item['reply'] = lxk_rep['reply']
+      item['preprocessed_body'] = text_preprocessor.preprocess(body)
       yield item
 
 
