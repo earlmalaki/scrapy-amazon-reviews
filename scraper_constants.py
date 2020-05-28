@@ -65,5 +65,3 @@ AMZ_AJAX_COMMENTS_PAYLOAD = {
 EXPRTFLDS_ALL = ['id','date','username','stars','model','program','codename','purchaseType','title','body','url','upvotes','comments','LXKresponded','reply','preprocessed_body']
 # Selected fields
 EXPRTFLDS_SELECTED = ['id','date','username','stars','model','purchaseType','title','body','url','upvotes','comments','LXKresponded','reply']
-
-# git commit -m "Added pipeline to export 3 csv files: cx tracked products, all products, pbi report. Added export field constants. Added preprocessed body to output. Added body text preprocessor."

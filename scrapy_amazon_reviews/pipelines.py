@@ -24,7 +24,12 @@ class CsvExportPipeline(object):
 
     def spider_opened(self, spider):
         dtnow = str(datetime.datetime.now().strftime("%Y-%m-%dT%I-%M"))
-        self.files = dict([ (name, open(spider.name+'/Scrapy_AmazonReviews_'+name+'_'+dtnow +'.csv','w+b')) for name in self.SaveTypes ])
+        # self.files = dict([ (name, open(spider.name+'/Scrapy_AmazonReviews_'+name+'_'+dtnow +'.csv','w+b')) for name in self.SaveTypes ])
+        self.files = {
+            self.SaveTypes[0]: open(spider.name+'/Scrapy_AmazonReviews_'+self.SaveTypes[0]+'_'+dtnow +'.csv','w+b'),
+            self.SaveTypes[1]: open(spider.name+'/Scrapy_AmazonReviews_'+self.SaveTypes[1]+'_'+dtnow +'.csv','w+b'),
+            self.SaveTypes[2]: open(spider.name+'/Scrapy_AmazonReviews_'+self.SaveTypes[2]+'.csv','w+b')
+        }
         self.exporters = {
             self.SaveTypes[0]: CsvItemExporter(self.files[self.SaveTypes[0]], fields_to_export=constants.EXPRTFLDS_SELECTED),
             self.SaveTypes[1]: CsvItemExporter(self.files[self.SaveTypes[1]], fields_to_export=constants.EXPRTFLDS_SELECTED),
