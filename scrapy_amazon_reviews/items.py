@@ -1,3 +1,10 @@
+########################################
+# Author : Earl Timothy D. Malaki
+# User Experience Designer
+# Plaza 2 6th Floor C'10 6
+# Lexmark Research and Development Cebu
+########################################
+
 # -*- coding: utf-8 -*-
 
 # Define here the models for your scraped items
@@ -8,21 +15,20 @@
 import scrapy
 
 class AmazonReview(scrapy.Item):
-   # define the fields for your item here like:
-   id = scrapy.Field()
-   date = scrapy.Field()
-   username = scrapy.Field()
-   stars = scrapy.Field()
-   model = scrapy.Field()
-   codename = scrapy.Field()
-   program = scrapy.Field()
-   purchaseType = scrapy.Field()
-   title = scrapy.Field()
-   body = scrapy.Field()
-   url = scrapy.Field()
-   upvotes = scrapy.Field()
-   comments = scrapy.Field()
-   LXKresponded = scrapy.Field()
-   reply = scrapy.Field()
-   preprocessed_body = scrapy.Field()
-   
+    # define the fields for your item here like:
+    id = scrapy.Field()
+    date = scrapy.Field()
+    username = scrapy.Field()
+    stars = scrapy.Field()
+    model = scrapy.Field()
+    codename = scrapy.Field()
+    program = scrapy.Field()
+    purchaseType = scrapy.Field()
+    title = scrapy.Field()
+    body = scrapy.Field()
+    url = scrapy.Field()
+    upvotes = scrapy.Field()
+    comments = scrapy.Field()
+    LXKresponded = scrapy.Field()
+    reply = scrapy.Field()
+    preprocessed_body = scrapy.Field()
