@@ -166,6 +166,7 @@ class AmazonReviewsSpider(scrapy.Spider):
             item["preprocessed_body"] = text_preprocessor.preprocess(body)
             yield item
 
+
     def get_lxk_reply(self, asin, id):
         with requests.Session() as s:
             # Post AJAX request to get HTML for comments
