@@ -1,15 +1,27 @@
-# URL for Amazon Review Page for a prodcut
-PR_URL_BASE = "https://www.amazon.com/product-reviews/"
-PR_URL_PARAMS = "?ie=UTF8&reviewerType=all_reviews&sortBy=recent&pageNumber=1&m=2529788011"
-# Example: https://www.amazon.com/product-reviews/B07F21DSM8?sortBy=recent&pageNumber=1&m=2529788011
-# Vars -> ASIN (B07F21DSM8), Page (1), Lexmark Amazon Seller ID (2529788011)
+########################################
+# Author : Earl Timothy D. Malaki
+# User Experience Designer
+# Plaza 2 6th Floor C'10 6
+# Lexmark Research and Development Cebu
+########################################
 
-# URL for Amazon Review Page for a customer review
+# This file contains various constant values used althroughout the scraper
+
+# URL for the "All Reviews" page of a product
+PR_URL_BASE = "https://www.amazon.com/product-reviews/"
+PR_URL_PARAMS = (
+    "?ie=UTF8&reviewerType=all_reviews&sortBy=recent&m=2529788011&pageNumber="
+)
+# Example: https://www.amazon.com/product-reviews/B07F21DSM8?sortBy=recent&m=2529788011&pageNumber=1
+# Variables -> ASIN (B07F21DSM8), Page (1), Lexmark Amazon Seller ID (2529788011)
+
+# URL for a particular review
 CR_URL_BASE = "https://www.amazon.com/gp/customer-reviews/"
 CR_URL_PARAMS = "?ie=UTF8&ASIN="
 # Example: https://www.amazon.com/gp/customer-reviews/R1LVMAR6YBYF7X?ASIN=B07T4LGDGQ
-# Vars -> Review ID (R1LVMAR6YBYF7X), ASIN (B07T4LGDGQ)
+# Variables -> Review ID (R1LVMAR6YBYF7X), ASIN (B07T4LGDGQ)
 
+# For writing csv files
 OUTPUT_NAME_PREFIX = "Scrapy_AmazonReviews_"
 OUTPUT_NAME_POSTFIX = ".csv"
 
@@ -17,15 +29,15 @@ OUTPUT_NAME_POSTFIX = ".csv"
 # Used for checking each review's data points
 AMZN_DEF_UPVOTE_ONE = "One"
 AMZN_DEF_OFFICIAL_COMMENT = "The manufacturer commented on the review below"
-
 BADGE_NOT_VER = "Unverified"
 BADGE_VER = "Verified Purchase"
 BADGE_VINE = "Vine Customer"
-
 LXK_AMZN_ACCNT = "Lexmark Support"
 
 # AJAX Constants for opening comments
-AMZ_AJAX_COMMENTS_URL = "https://www.amazon.com/hz/reviews-render/ajax/comment/get/ref=cm_cr_arp_d_cmt_opn"
+AMZ_AJAX_COMMENTS_URL = (
+    "https://www.amazon.com/hz/reviews-render/ajax/comment/get/ref=cm_cr_arp_d_cmt_opn"
+)
 AMZ_AJAX_COMMENTS_HEADERS = {
     "accept": "text/html,*/*",
     "accept-encoding": "gzip, deflate, br",
@@ -38,11 +50,11 @@ AMZ_AJAX_COMMENTS_HEADERS = {
     # "x-requested-with": "XMLHttpRequest"
 }
 AMZ_AJAX_COMMENTS_PAYLOAD = {
-    'sortCommentsBy': 'newest',
-    'offset': 0,
-    'count': 35,
-    'asin': "",
-    'reviewId': ""
+    "sortCommentsBy": "newest",
+    "offset": 0,
+    "count": 35,
+    "asin": "",
+    "reviewId": "",
 }
 
 # AJAX Constants for accessing more comments
@@ -58,3 +70,41 @@ AMZ_AJAX_COMMENTS_PAYLOAD = {
 #     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36",
 #     "x-requested-with": "XMLHttpRequest"
 # }
+
+
+# Proper order of columns
+# All fields
+EXPRTFLDS_ALL = [
+    "id",
+    "date",
+    "username",
+    "stars",
+    "model",
+    "program",
+    "codename",
+    "purchaseType",
+    "title",
+    "body",
+    "url",
+    "upvotes",
+    "comments",
+    "LXKresponded",
+    "reply",
+    "preprocessed_body",
+]
+# Selected fields
+EXPRTFLDS_SELECTED = [
+    "id",
+    "date",
+    "username",
+    "stars",
+    "model",
+    "purchaseType",
+    "title",
+    "body",
+    "url",
+    "upvotes",
+    "comments",
+    "LXKresponded",
+    "reply",
+]
