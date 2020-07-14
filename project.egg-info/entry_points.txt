@@ -1,3 +1,0 @@
-[scrapy]
-settings = scrapy_amazon_reviews.settings
-
