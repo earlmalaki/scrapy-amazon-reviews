@@ -13,8 +13,8 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 import datetime
-import scraper_products as products_source
-import scraper_constants as constants
+from scrapy_amazon_reviews import product_list
+from scrapy_amazon_reviews import utility
 
 from pydispatch import dispatcher
 from scrapy import signals
@@ -29,7 +29,7 @@ class CsvExportPipeline(object):
         dispatcher.connect(self.spider_opened, signals.spider_opened)
         dispatcher.connect(self.spider_closed, signals.spider_closed)
         self.files = {}
-        self.tracked_prdcts = products_source.get_tracked_products()
+        self.tracked_prdcts = product_list.get_tracked_products()
 
     def spider_opened(self, spider):
         dtnow = str(datetime.datetime.now().strftime("%Y-%m-%dT%I-%M"))
@@ -61,14 +61,14 @@ class CsvExportPipeline(object):
         self.exporters = {
             self.SaveTypes[0]: CsvItemExporter(
                 self.files[self.SaveTypes[0]],
-                fields_to_export=constants.EXPRTFLDS_SELECTED,
+                fields_to_export=utility.EXPRTFLDS_SELECTED,
             ),
             self.SaveTypes[1]: CsvItemExporter(
                 self.files[self.SaveTypes[1]],
-                fields_to_export=constants.EXPRTFLDS_SELECTED,
+                fields_to_export=utility.EXPRTFLDS_SELECTED,
             ),
             self.SaveTypes[2]: CsvItemExporter(
-                self.files[self.SaveTypes[2]], fields_to_export=constants.EXPRTFLDS_ALL
+                self.files[self.SaveTypes[2]], fields_to_export=utility.EXPRTFLDS_ALL
             ),
         }
 
