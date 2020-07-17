@@ -4,7 +4,7 @@
 # Plaza 2 6th Floor C'10 6
 # Lexmark Research and Development Cebu
 ########################################
-'''
+"""
 The main spider for the project.
 Below is a high level view of the flow:
 - get a list of products from product_list.py
@@ -12,7 +12,7 @@ Below is a high level view of the flow:
 - Extract data for each page
 - Use utility.py for computation and manipulations
 - Output .csv files to amazon_reviews
-'''
+"""
 ########################################
 
 # Importing libraries
@@ -38,9 +38,7 @@ class AmazonReviewsSpider(scrapy.Spider):
         # starting urls are page 1 of product review page for each product
         # pass product info (ASIN and Model) to parse method via meta attr
         for product in product_list.get_products():
-            url = (
-                utility.PR_URL_BASE + product["asin"] + utility.PR_URL_PARAMS + "1"
-            )
+            url = utility.PR_URL_BASE + product["asin"] + utility.PR_URL_PARAMS + "1"
             yield scrapy.Request(url=url, callback=self.parse, meta=product)
 
     # Defining a Scrapy parser
@@ -168,7 +166,6 @@ class AmazonReviewsSpider(scrapy.Spider):
             item["reply"] = lxk_rep["reply"]
             item["preprocessed_body"] = utility.preprocess(body)
             yield item
-
 
     def get_lxk_reply(self, asin, id):
         with requests.Session() as s:
