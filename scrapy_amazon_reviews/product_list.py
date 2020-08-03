@@ -1,8 +1,11 @@
 ########################################
-# Author : Earl Timothy D. Malaki
-# User Experience Designer
-# Plaza 2 6th Floor C'10 6
-# Lexmark Research and Development Cebu
+# Authors:
+# Earl Malaki
+# Joy Trocio
+########################################
+# - static file that contains the following:
+# -- list of products (ASIN and model)
+# -- list of tracked products
 ########################################
 
 # CX Watchlist

@@ -1,13 +1,19 @@
 ########################################
-# Author : Earl Timothy D. Malaki
-# User Experience Designer
-# Plaza 2 6th Floor C'10 6
-# Lexmark Research and Development Cebu
+# Authors:
+# Earl Malaki
+# Joy Trocio
+########################################
+# - utility file
+# - contains a mix of utiliy static constants, utility methods
+# - also contains product map object. Used to map models <-> codename <-> program.
+# - for more information, kindly refer to the source documentation.
 ########################################
 
-'''
-Text preprocessing utility
-'''
+
+
+
+# Text preprocessing utility
+
 import re
 import string
 from nltk.tokenize import word_tokenize
@@ -61,31 +67,24 @@ def preprocess(text):
 
 
 
-'''
-Contains constant values and utility variables
-'''
 
-'''
-URL for the "All reviews" page of a product
-Example: https://www.amazon.com/product-reviews/B07F21DSM8?sortBy=recent&m=2529788011&pageNumber=1
-Variables -> ASIN (B07F21DSM8), Page (1), Lexmark Amazon Seller ID (2529788011)
-'''
+# Contains constant values and utility variables
+# URL for the "All reviews" page of a product
+# Example: https://www.amazon.com/product-reviews/B07F21DSM8?sortBy=recent&m=2529788011&pageNumber=1
+# Variables -> ASIN (B07F21DSM8), Page (1), Lexmark Amazon Seller ID (2529788011)
 PR_URL_BASE = "https://www.amazon.com/product-reviews/"
 PR_URL_PARAMS = (
     "?ie=UTF8&reviewerType=all_reviews&sortBy=recent&m=2529788011&pageNumber="
 )
 
-'''
-URL for a particular review
-Example: https://www.amazon.com/gp/customer-reviews/R1LVMAR6YBYF7X?ASIN=B07T4LGDGQ
-Variables -> Review ID (R1LVMAR6YBYF7X), ASIN (B07T4LGDGQ)
-'''
+
+# URL for a particular review
+# Example: https://www.amazon.com/gp/customer-reviews/R1LVMAR6YBYF7X?ASIN=B07T4LGDGQ
+# Variables -> Review ID (R1LVMAR6YBYF7X), ASIN (B07T4LGDGQ)
 CR_URL_BASE = "https://www.amazon.com/gp/customer-reviews/"
 CR_URL_PARAMS = "?ie=UTF8&ASIN="
 
-'''
-Constant values
-'''
+# Constant values
 OUTPUT_NAME_PREFIX = "Scrapy_AmazonReviews_"
 OUTPUT_NAME_POSTFIX = ".csv"
 
@@ -155,15 +154,14 @@ EXPRTFLDS_SELECTED = [
 
 
 
-'''
-Product Map Matrix
-Map which models belong to which codenames, and which codename belongs to program.
-[
-  [Program, Codename, [Models]],
-  [Program, Codename, [Models]],
-  [Program, Codename, [Models]]
-]
-'''
+
+# Product Map Matrix
+# Map which models belong to which codenames, and which codename belongs to program.
+# [
+#   [Program, Codename, [Models]],
+#   [Program, Codename, [Models]],
+#   [Program, Codename, [Models]]
+# ]
 PRODUCT_MAP = [
     ["Baja/Donzi (BD)", "Baja", ["B3442dw", "B3340dw"]],
     ["Baja/Donzi (BD)", "Donzi", ["MB3442adw"]],
@@ -178,11 +176,9 @@ PRODUCT_MAP = [
     ["Skyfall/Moonraker (SM)", "Skyfall", ["MB2338adw", "MB2442adwe"]]
 ]
 
-'''
-Returns the printer program and codename, given the model name.
-Program | Codename | Model
-[program, [codename1,codename2], model]
-'''
+# Returns the printer program and codename, given the model name.
+# Program | Codename | Model
+# [program, [codename1,codename2], model]
 def get_program_codename(string):
     for product in PRODUCT_MAP:
         for model in product[2]:

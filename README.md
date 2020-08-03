@@ -53,7 +53,7 @@ Possible improvements are as listed:
 Written by Earl Malaki
 This project started as a side project/exploration for my team's benefit.
 We then collaborated with various teams from other departments to make the most use out of the reviews dataset.
-Development and improvements will soon be passed forward.
+There's an ongoing collaboraiton with Joy Trocio to take the project further.
 
 
 ## License

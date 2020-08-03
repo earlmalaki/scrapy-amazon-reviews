@@ -14,44 +14,23 @@ BOT_NAME = "scrapy_amazon_reviews"
 SPIDER_MODULES = ["scrapy_amazon_reviews.spiders"]
 NEWSPIDER_MODULE = "scrapy_amazon_reviews.spiders"
 
-# Export as CSV Feed
-# FEED_FORMAT = "csv"
-# FEED_URI = "%(name)s/Scrapy_AmazonReviews_%(time)s.csv"
-# FEED_EXPORT_ENCODING = "utf-8"
-
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'scrapy_amazon_reviews (+http://www.yourdomain.com)'
-# header from amazon xhr request
-# USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
-# og scraper main header
-# USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0"
-USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36"
-# USER_AGENTS = [
-#     ('Mozilla/5.0 (X11; Linux x86_64) '
-#      'AppleWebKit/537.36 (KHTML, like Gecko) '
-#      'Chrome/57.0.2987.110 '
-#      'Safari/537.36'),  # chrome
-#     ('Mozilla/5.0 (X11; Linux x86_64) '
-#      'AppleWebKit/537.36 (KHTML, like Gecko) '
-#      'Chrome/61.0.3163.79 '
-#      'Safari/537.36'),  # chrome
-#     ('Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:55.0) '
-#      'Gecko/20100101 '
-#      'Firefox/55.0'),  # firefox
-#     ('Mozilla/5.0 (X11; Linux x86_64) '
-#      'AppleWebKit/537.36 (KHTML, like Gecko) '
-#      'Chrome/61.0.3163.91 '
-#      'Safari/537.36'),  # chrome
-#     ('Mozilla/5.0 (X11; Linux x86_64) '
-#      'AppleWebKit/537.36 (KHTML, like Gecko) '
-#      'Chrome/62.0.3202.89 '
-#      'Safari/537.36'),  # chrome
-#     ('Mozilla/5.0 (X11; Linux x86_64) '
-#      'AppleWebKit/537.36 (KHTML, like Gecko) '
-#      'Chrome/63.0.3239.108 '
-#      'Safari/537.36'),  # chrome
-# ]
+# USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36"
+USER_AGENTS = [
+     ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+      'AppleWebKit/537.36 (KHTML, like Gecko) '
+      'Chrome/84.0.4147.105 '
+      'Safari/537.36'),
+      ('Mozilla/5.0 (Windows NT 10.0; WOW64) '
+      'AppleWebKit/537.36 (KHTML, like Gecko)'
+      'Chrome/84.0.4147.105 '
+      'Safari/537.36'),
+      ('Mozilla/5.0 (Windows NT 10.0) '
+      'AppleWebKit/537.36 (KHTML, like Gecko)'
+      'Chrome/84.0.4147.105 '
+      'Safari/537.36')
+]
 
 # ROTATING_PROXY_LIST = [
 #     'proxy1.com:8000',
@@ -68,7 +47,7 @@ ROBOTSTXT_OBEY = True
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 # DOWNLOAD_DELAY = 3
-DOWNLOAD_DELAY = 5
+DOWNLOAD_DELAY = 4
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
